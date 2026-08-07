@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishwas Mamgain | Java Backend Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        dark: {
+                            bg: '#0a0a0b',
+                            surface: '#121214',
+                            border: '#27272a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-feature-settings: "cv11", "ss01"; }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+        .cursor-blink::after { content: '|'; animation: blink 1s step-end infinite; color: #22c55e; }
+        @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .counter-animate { animation: countUp 0.6s ease-out forwards; }
+        @keyframes flowPulse { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+        .flow-node { transition: all 0.3s ease; }
+        .flow-line { stroke-dasharray: 10; animation: flowMove 2s linear infinite; }
+        @keyframes flowMove { to { stroke-dashoffset: -20; } }
+        .gradient-text { background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #121214; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+    </style>
+</head>
+<body class="bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="fixed top-4 right-4 z-50 p-2 rounded-lg bg-gray-200 dark:bg-dark-surface border border-gray-300 dark:border-dark-border hover:bg-gray-300 dark:hover:bg-zinc-800 transition-colors" aria-label="Toggle theme">
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-gray-200 dark:border-dark-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="font-mono text-lg font-semibold gradient-text">VM.</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Skills</a>
+                    <a href="#projects" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Projects</a>
+                    <a href="#experience" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Experience</a>
+                    <a href="#contact" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
+            <div class="mb-6">
+                <span class="inline-block px-3 py-1 text-xs font-mono text-green-500 bg-green-500/10 rounded-full border border-green-500/20">Available for opportunities</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 tracking-tight">Vishwas Mamgain</h1>
+            
+            <p class="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-6 font-light">Java Backend Engineer | Spring Boot & Spring AI</p>
+            
+            <!-- Terminal Typing Effect -->
+            <div class="max-w-2xl mx-auto mb-8 p-4 bg-dark-surface rounded-lg border border-dark-border font-mono text-sm text-left shadow-lg">
+                <div class="flex items-center gap-2 mb-3 pb-3 border-b border-dark-border">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span class="text-xs text-gray-500 ml-2">intro.sh</span>
+                </div>
+                <div class="text-gray-300">
+                    <span class="text-green-400">$</span> <span id="typewriter" class="cursor-blink"></span>
+                </div>
+            </div>
+            
+            <!-- Live Counter -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-10">
+                <div class="p-4 bg-gray-50 dark:bg-dark-surface rounded-lg border border-gray-200 dark:border-dark-border counter-item opacity-0">
+                    <div class="text-2xl font-bold gradient-text counter-target" data-target="10000">0</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">transactions/day</div>
+                </div>
+                <div class="p-4 bg-gray-50 dark:bg-dark-surface rounded-lg border border-gray-200 dark:border-dark-border counter-item opacity-0">
+                    <div class="text-2xl font-bold gradient-text counter-target" data-target="70">0</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">% API cost reduction</div>
+                </div>
+                <div class="p-4 bg-gray-50 dark:bg-dark-surface rounded-lg border border-gray-200 dark:border-dark-border counter-item opacity-0 md:block">
+                    <div class="text-2xl font-bold gradient-text counter-target" data-target="4">0</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">+ years experience</div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors">Get in Touch</a>
+                <a href="/resume.pdf" target="_blank" class="px-6 py-3 bg-gray-200 dark:bg-dark-surface hover:bg-gray-300 dark:hover:bg-zinc-800 text-gray-900 dark:text-white rounded-lg font-medium transition-colors border border-gray-300 dark:border-dark-border">Download Resume</a>
+            </div>
+            
+            <div class="flex items-center justify-center gap-6 mt-8">
+                <a href="https://github.com/vishwasmamgain" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="GitHub">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://linkedin.com/in/vishwasmamgain" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 transition-colors" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="mailto:vmamgain17@gmail.com" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Email">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-dark-surface">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-green-500 font-mono">01.</span> About
+            </h2>
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">I'm a backend engineer with over 4 years of experience building scalable systems that power financial products. My work spans from designing microservices architectures to integrating AI capabilities into production applications. I specialize in fintech portfolio management systems and have deep expertise in Spring Boot, event-driven architectures with Kafka, and performance optimization through strategic caching.</p>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">Currently, I'm building independent projects while exploring new opportunities. Previously, I worked at FINCART where I architected backend systems for multi-asset portfolio management, handling everything from digital gold trading to PMS solutions. I'm particularly interested in leveraging Spring AI to build intelligent backend services that can reason about complex business logic.</p>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">When I'm not writing Java, you'll find me optimizing database queries, experimenting with LLM integrations, or contributing to open-source projects. I believe in writing clean, maintainable code and designing systems that scale gracefully under load.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-green-500 font-mono">02.</span> Skills
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-6 bg-gray-50 dark:bg-dark-surface rounded-lg border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="font-semibold">Languages & Core</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Java 17</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">OOP</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Concurrency</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Data Structures</span>
+                    </div>
+                </div>
+                <div class="p-6 bg-gray-50 dark:bg-dark-surface rounded-lg border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        </div>
+                        <h3 class="font-semibold">Backend & Architecture</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Spring Boot</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Spring MVC</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Microservices</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">REST APIs</span>
+                    </div>
+                </div>
+                <div class="p-6 bg-gray-50 dark:bg-dark-surface rounded-lg border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        </div>
+                        <h3 class="font-semibold">AI Integration</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Spring AI</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">LLM APIs</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Semantic Caching</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">RAG Patterns</span>
+                    </div>
+                </div>
+                <div class="p-6 bg-gray-50 dark:bg-dark-surface rounded-lg border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                        </div>
+                        <h3 class="font-semibold">Databases</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">PostgreSQL</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Redis</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">SQL Optimization</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Query Tuning</span>
+                    </div>
+                </div>
+                <div class="p-6 bg-gray-50 dark:bg-dark-surface rounded-lg border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="font-semibold">Messaging</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Apache Kafka</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Event Streaming</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Dead Letter Queues</span>
+                    </div>
+                </div>
+                <div class="p-6 bg-gray-50 dark:bg-dark-surface rounded-lg border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                        </div>
+                        <h3 class="font-semibold">DevOps</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Docker</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Kubernetes</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">Azure DevOps</span>
+                        <span class="px-3 py-1 text-sm bg-gray-200 dark:bg-zinc-800 rounded-full">CI/CD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-dark-surface">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-green-500 font-mono">03.</span> Projects
+            </h2>
+            <div class="space-y-8">
+                <!-- Project 1 -->
+                <article class="bg-white dark:bg-dark-bg rounded-xl border border-gray-200 dark:border-dark-border overflow-hidden">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Multi-Asset Portfolio Management System</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">FINCART • Enterprise Fintech Platform</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Java</span>
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Spring Boot</span>
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Kafka</span>
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Redis</span>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="md:col-span-2 space-y-4">
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">What It Does</h4>
+                                    <p class="text-gray-700 dark:text-gray-300">Backend systems for a fintech platform managing Digital Gold, Mutual Funds, PMS, Unlisted Stocks, and Liquiloan. Integrated third-party MMTC-PAMP APIs for digital gold purchase/redemption, implemented FIFO-based portfolio accounting, and built scheduled cron jobs for daily portfolio valuations using live market prices.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Technical Approach</h4>
+                                    <p class="text-gray-700 dark:text-gray-300">Event-driven architecture using Kafka for asynchronous transaction processing at 10,000+ transactions/day with retries, idempotency, and dead-letter queues. Complex multi-table SQL aggregation APIs power portfolio dashboards. Redis caching and SQL query optimization reduced backend latency by 30%.</p>
+                                </div>
+                                <div class="p-4 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-200 dark:border-blue-800">
+                                    <h4 class="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide mb-2 flex items-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        Why FIFO Accounting?
+                                    </h4>
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">FIFO (First-In-First-Out) was the right fit for accurate, auditable P&L calculation because it mirrors the actual chronological flow of transactions—when a user sells units, we need to realize gains/losses against the earliest purchased units first. This approach is not only compliant with standard accounting practices but also simplifies audit trails since each sell transaction deterministically maps to specific buy lots. Alternative methods like LIFO or weighted average would have obscured the true cost basis for sequential trades, making regulatory reporting and user-facing transaction histories harder to reconcile.</p>
+                                </div>
+                                <div class="p-4 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-200 dark:border-green-800">
+                                    <h4 class="text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-wide mb-2 flex items-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        Key Achievement: 70% AI API Cost Reduction
+                                    </h4>
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">Semantically similar queries were being sent to the LLM repeatedly—users asking "show my gold holdings" and "display gold portfolio" are functionally identical. By implementing Redis-based semantic caching with confidence-based request routing, we cached embeddings of previous queries and their responses. When a new query arrived, we computed its embedding and checked similarity against cached entries. If confidence exceeded a threshold, we served from cache instead of calling the LLM. This cut redundant API calls by 70% while maintaining response quality.</p>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Request Flow</h4>
+                                <div class="p-4 bg-dark-surface rounded-lg border border-dark-border font-mono text-xs">
+                                    <div class="space-y-4">
+                                        <div class="flow-node p-3 bg-green-500/20 border border-green-500/30 rounded text-center" id="flow-client">Client Request</div>
+                                        <svg class="w-full h-4" viewBox="0 0 100 20"><line x1="50" y1="0" x2="50" y2="20" stroke="#22c55e" stroke-width="2" class="flow-line"/></svg>
+                                        <div class="flow-node p-3 bg-blue-500/20 border border-blue-500/30 rounded text-center" id="flow-api">REST API</div>
+                                        <svg class="w-full h-4" viewBox="0 0 100 20"><line x1="50" y1="0" x2="50" y2="20" stroke="#3b82f6" stroke-width="2" class="flow-line"/></svg>
+                                        <div class="flow-node p-3 bg-orange-500/20 border border-orange-500/30 rounded text-center" id="flow-cache">Redis Cache</div>
+                                        <svg class="w-full h-4" viewBox="0 0 100 20"><line x1="50" y1="0" x2="50" y2="20" stroke="#f97316" stroke-width="2" class="flow-line"/></svg>
+                                        <div class="flow-node p-3 bg-purple-500/20 border border-purple-500/30 rounded text-center" id="flow-db">PostgreSQL</div>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-dark-border">
+                                        <div class="text-gray-400 mb-2">Cache Hit Rate:</div>
+                                        <div class="text-green-400 text-lg font-bold" id="cache-hit-rate">73%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Project 2 -->
+                <article class="bg-white dark:bg-dark-bg rounded-xl border border-gray-200 dark:border-dark-border overflow-hidden">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">AI-Powered Job Tracker</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">Personal Project • Full-Stack Application</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Java</span>
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Spring Boot</span>
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Spring AI</span>
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Docker</span>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="md:col-span-2 space-y-4">
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">What It Does</h4>
+                                    <p class="text-gray-700 dark:text-gray-300">End-to-end job application tracker with natural language search capabilities. Users can track applications, add notes, and search using conversational queries like "show me rejected jobs from last month" or "find all interviews scheduled this week."</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Technical Approach</h4>
+                                    <p class="text-gray-700 dark:text-gray-300">Built with Java, Spring Boot, PostgreSQL, Redis, Spring AI, JWT authentication, and Docker Compose. Integrated Spring AI with Groq's LLM API to enable natural language search over structured job application data. Implemented Redis caching with TTL-based invalidation for frequently accessed queries. Fully containerized for one-command local deployment.</p>
+                                </div>
+                                <div class="p-4 bg-purple-50 dark:bg-purple-900/10 rounded-lg border border-purple-200 dark:border-purple-800">
+                                    <h4 class="text-sm font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wide mb-2">Key Decision: Semantic Search Over Structured Data</h4>
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">Instead of building complex SQL query parsers for natural language input, I leveraged Spring AI to convert user queries into embeddings and match them against pre-computed embeddings of job records. This approach handles synonyms, typos, and varied phrasing naturally—"rejected" matches "denied," "not selected," etc.—without maintaining exhaustive synonym lists or regex patterns.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center">
+                                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                    </div>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Natural Language Processing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Project 3 -->
+                <article class="bg-white dark:bg-dark-bg rounded-xl border border-gray-200 dark:border-dark-border overflow-hidden">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">AI-Powered Transaction Classification Platform</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">Enterprise System • Event-Driven Architecture</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Kafka</span>
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Spring AI</span>
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">Redis</span>
+                                <span class="px-3 py-1 text-xs bg-green-500/10 text-green-500 rounded-full">GPT API</span>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="md:col-span-2 space-y-4">
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">What It Does</h4>
+                                    <p class="text-gray-700 dark:text-gray-300">Event-driven backend for automated fintech transaction classification, processing 10,000+ transactions/day. Automatically categorizes incoming transactions (merchant type, expense category, tax implications) using AI models with human-in-the-loop fallback for low-confidence predictions.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Technical Approach</h4>
+                                    <p class="text-gray-700 dark:text-gray-300">Kafka consumers process transaction events asynchronously. Each transaction flows through a classification pipeline: rule-based pre-filtering → semantic cache lookup → LLM classification (if needed) → confidence routing → persistence. Implemented retries, idempotent consumers, and dead-letter queues for reliability.</p>
+                                </div>
+                                <div class="p-4 bg-orange-50 dark:bg-orange-900/10 rounded-lg border border-orange-200 dark:border-orange-800">
+                                    <h4 class="text-sm font-semibold text-orange-600 dark:text-orange-400 uppercase tracking-wide mb-2">Key Achievement: Reliability at Scale</h4>
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">The system handles 10,000+ transactions daily with 99.9% uptime. Idempotent consumers ensure exactly-once processing semantics even when Kafka redelivers messages. Dead-letter queues capture failed classifications for manual review, preventing data loss while allowing the pipeline to continue processing. This design choice prioritized data integrity over raw throughput—a critical requirement for financial systems.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <div class="relative">
+                                    <div class="w-32 h-32 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center animate-pulse">
+                                        <div class="text-center text-white">
+                                            <div class="text-3xl font-bold">10K+</div>
+                                            <div class="text-sm opacity-80">transactions/day</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-green-500 font-mono">04.</span> Experience
+            </h2>
+            <div class="relative">
+                <div class="absolute left-0 md:left-1/2 transform md:-translate-x-px h-full w-px bg-gray-200 dark:bg-dark-border"></div>
+                <div class="space-y-12">
+                    <div class="relative md:flex items-center justify-between group">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-lg font-bold">Independent / Freelance</h3>
+                            <p class="text-green-500 font-mono text-sm">Apr 2026 – Present</p>
+                        </div>
+                        <div class="absolute left-[-5px] md:left-1/2 transform md:-translate-x-1/2 w-3 h-3 bg-green-500 rounded-full border-4 border-white dark:border-dark-bg"></div>
+                        <div class="md:w-1/2 md:pl-12">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Building independent projects, exploring AI integrations with Spring Boot, and consulting on backend architecture for fintech startups.</p>
+                        </div>
+                    </div>
+                    <div class="relative md:flex items-center justify-between group">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 order-2 md:order-1">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Architected backend systems for multi-asset portfolio management. Led AI integration initiatives reducing API costs by 70%. Implemented event-driven transaction processing at scale.</p>
+                        </div>
+                        <div class="absolute left-[-5px] md:left-1/2 transform md:-translate-x-1/2 w-3 h-3 bg-blue-500 rounded-full border-4 border-white dark:border-dark-bg"></div>
+                        <div class="md:w-1/2 md:pl-12 order-1 md:order-2">
+                            <h3 class="text-lg font-bold">Software Engineer</h3>
+                            <p class="text-green-500 font-mono text-sm">FINCART • Mar 2024 – Apr 2026</p>
+                        </div>
+                    </div>
+                    <div class="relative md:flex items-center justify-between group">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-lg font-bold">Junior Software Engineer</h3>
+                            <p class="text-green-500 font-mono text-sm">ARJH Tech Labs • Sep 2021 – Mar 2024</p>
+                        </div>
+                        <div class="absolute left-[-5px] md:left-1/2 transform md:-translate-x-1/2 w-3 h-3 bg-gray-400 rounded-full border-4 border-white dark:border-dark-bg"></div>
+                        <div class="md:w-1/2 md:pl-12">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Developed REST APIs and microservices. Gained foundational experience in Spring Boot, PostgreSQL, and agile development practices.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-dark-surface">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
+                <span class="text-green-500 font-mono">05.</span> Contact
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto">I'm currently exploring new opportunities. Whether you have a question, want to discuss a project, or just want to say hi—I'll do my best to get back to you!</p>
+            <a href="mailto:vmamgain17@gmail.com" class="inline-flex items-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors mb-12">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                Say Hello
+            </a>
+            <div class="flex items-center justify-center gap-8 mb-12">
+                <a href="https://github.com/vishwasmamgain" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/vishwasmamgain" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <span class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    Noida, India
+                </span>
+            </div>
+            <footer class="pt-8 border-t border-gray-200 dark:border-dark-border">
+                <p class="text-sm text-gray-500 dark:text-gray-500 font-mono">Built with plain HTML, Tailwind CSS & vanilla JavaScript. No frameworks.</p>
+            </footer>
+        </div>
+    </section>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') html.classList.remove('dark');
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Typewriter Effect
+        const typewriterText = 'echo "Building scalable backend systems with Java & Spring Boot"';
+        const typewriterElement = document.getElementById('typewriter');
+        let charIndex = 0;
+        function typeWriter() {
+            if (charIndex < typewriterText.length) {
+                typewriterElement.textContent += typewriterText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 50 + Math.random() * 50);
+            } else {
+                typewriterElement.classList.remove('cursor-blink');
+                setTimeout(() => typewriterElement.classList.add('cursor-blink'), 500);
+            }
+        }
+        setTimeout(typeWriter, 500);
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter-target');
+        const animateCounter = (counter) => {
+            const target = parseInt(counter.dataset.target);
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    counter.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target.toLocaleString() + (target === 70 ? '%' : '+');
+                }
+            };
+            updateCounter();
+        };
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.closest('.counter-item').classList.remove('opacity-0');
+                        entry.target.closest('.counter-item').classList.add('counter-animate');
+                        animateCounter(entry.target);
+                    }, index * 200);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Request Flow Animation
+        const flowNodes = ['flow-client', 'flow-api', 'flow-cache', 'flow-db'];
+        let currentFlowNode = 0;
+        function animateFlow() {
+            flowNodes.forEach((id, index) => {
+                const node = document.getElementById(id);
+                if (index === currentFlowNode) {
+                    node.style.animation = 'flowPulse 0.5s ease-in-out';
+                    node.style.background = index === 1 ? 'rgba(59, 130, 246, 0.3)' : index === 2 ? 'rgba(249, 115, 22, 0.3)' : index === 3 ? 'rgba(168, 85, 247, 0.3)' : 'rgba(34, 197, 94, 0.3)';
+                } else {
+                    node.style.animation = '';
+                    node.style.background = index === 1 ? 'rgba(59, 130, 246, 0.1)' : index === 2 ? 'rgba(249, 115, 22, 0.1)' : index === 3 ? 'rgba(168, 85, 247, 0.1)' : 'rgba(34, 197, 94, 0.1)';
+                }
+            });
+            currentFlowNode = (currentFlowNode + 1) % flowNodes.length;
+        }
+        setInterval(animateFlow, 1500);
+
+        // Simulate live cache hit rate updates
+        const cacheHitRate = document.getElementById('cache-hit-rate');
+        setInterval(() => {
+            const baseRate = 73;
+            const variation = Math.floor(Math.random() * 5) - 2;
+            cacheHitRate.textContent = (baseRate + variation) + '%';
+        }, 3000);
+    </script>
+</body>
+</html>
